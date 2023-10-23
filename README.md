@@ -25,12 +25,7 @@ Endpoint para gradear Pokemon
 |9|Status Code|200|
 |10|Response type|application/json|
 |11|Response|[{"id_pokemon": int, "nombre": string, "grado": string}]|
-|12|Curl|curl -X 'POST' \
-  'http://localhost:8000/procesar-imagen-y-valorar-pokemon/' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'file=@imagen_pokemon.jpeg;type=image/jpeg'
-|
+|12|Curl|curl -X 'POST' \'http://localhost:8000/procesar-imagen-y-valorar-pokemon/' \-H 'accept: application/json' \-H 'Content-Type: multipart/form-data' \-F 'file=@imagen_pokemon.jpeg;type=image/jpeg'|
 |13|Status Code (error)|429|
 |14|Response Type (error)|application/json|
 |15|Response (error)|{"message":"No hay registros"}|

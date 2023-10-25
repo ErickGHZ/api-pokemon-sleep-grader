@@ -296,6 +296,7 @@ async def process_image(file: UploadFile):
         subskill3_text = pytesseract.image_to_string(subskill3)
         subskill4_text = pytesseract.image_to_string(subskill4)
         subskill5_text = pytesseract.image_to_string(subskill5)
+        
 
         # Inicializa el diccionario de resultados
         result = {
@@ -316,6 +317,7 @@ async def process_image(file: UploadFile):
             "subskill5": subskill5_text
         }
 
+        
         # Crear un diccionario result con la información de texto
         result = {
             "pokemon": pokemon_text.strip(),
@@ -328,6 +330,10 @@ async def process_image(file: UploadFile):
                 subskill5_text.strip()
             ]
         }
+        
+        # Iterar sobre la lista de subskills y eliminar los caracteres no deseados
+        for i, subskill in enumerate(result["subskills"]):
+            result["subskills"][i] = subskill.replace("|\n", "")
 
         # Asignar los valores a las variables
         pokemon = result["pokemon"]
@@ -380,12 +386,10 @@ async def process_image(file: UploadFile):
             "detail": explain_str,
             "pokemon": pokemon,
             "nature": nature,
-            "subskills": subskills
-            
-            
-            
+            "subskills": subskills            
         }
 
         return result
     except Exception as e:
-         raise HTTPException(status_code=500, detail="Error al procesar la imagen y generar un resultado")
+          error_message = str(e)  # Obtener el mensaje de error como cadena
+          raise HTTPException(status_code=500, detail=error_message)

@@ -1,3 +1,4 @@
+import fastapi
 from fastapi import FastAPI, File, UploadFile, Query, HTTPException, Path
 from pydantic import BaseModel
 from typing import Optional, List
@@ -11,7 +12,7 @@ from io import BytesIO
 from fastapi.responses import HTMLResponse
 
 
-app = FastAPI()
+app = fastapi.FastAPI()
 
 class CalculationRequest(BaseModel):
     pokemon: str

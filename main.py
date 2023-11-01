@@ -1,6 +1,5 @@
 from fastapi import FastAPI, File, UploadFile, Query, HTTPException, Path
 from pydantic import BaseModel
-import csv
 from typing import Optional, List
 import os
 import shutil
@@ -10,7 +9,7 @@ import spacy
 from fastapi.staticfiles import StaticFiles
 from io import BytesIO
 from fastapi.responses import HTMLResponse
-import json
+
 
 app = FastAPI()
 
